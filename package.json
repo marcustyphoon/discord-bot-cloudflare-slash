@@ -1,11 +1,10 @@
 {
-  "name": "slash-create-worker-template",
-  "description": "A template for slash-create with Cloudflare Workers",
-  "author": "Snazzah",
+  "name": "discord-bot-cloudflare-slash",
   "main": "src/index.ts",
-  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
+    "ngrok": "ngrok http 8787",
     "deploy": "wrangler publish",
     "sync": "slash-up sync",
     "sync:dev": "slash-up sync -e development",
@@ -18,9 +17,10 @@
     "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
+    "ngrok": "^5.0.0-beta.2",
     "prettier": "^3.0.0",
     "slash-create": "^6.0.1",
     "slash-up": "^1.4.2",
-    "wrangler": "^3.15.0"
+    "wrangler": "^3.21.0"
   }
 }

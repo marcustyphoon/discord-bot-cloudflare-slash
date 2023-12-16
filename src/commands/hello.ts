@@ -9,13 +9,15 @@ export default class BotCommand extends SlashCommand {
         {
           type: CommandOptionType.STRING,
           name: 'food',
-          description: 'What food do you like?'
-        }
-      ]
+          description: 'What food do you like?',
+        },
+      ],
     });
   }
 
   async run(ctx: CommandContext) {
-    return ctx.options.food ? `You like ${ctx.options.food}? Nice!` : `Hello, ${ctx.user.username}!`;
+    return ctx.options.food
+      ? `You like ${ctx.options.food}? Nice!`
+      : `Hello, ${ctx.user.username}!`;
   }
 }

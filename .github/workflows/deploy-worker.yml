@@ -1,0 +1,77 @@
+name: Deploy Worker
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: 'deploy'
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: lts/*
+
+jobs:
+  # see https://github.com/orgs/community/discussions/26726, https://stackoverflow.com/a/70249520
+  check-secret-guild-id:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    outputs:
+      exists: ${{ steps.check-secret-step.outputs.exists }}
+    steps:
+      - name: Check if DEVELOPMENT_GUILD_ID secret exists
+        id: check-secret-step
+        run: |
+          if [ "${{ secrets.DEVELOPMENT_GUILD_ID }}" != '' ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT;
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT;
+          fi
+
+  deploy:
+    needs: [check-secret-guild-id]
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache dependencies
+        id: node-modules-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+
+      - name: Sync Commands (Guild)
+        run: npm run sync -- -i ${{ secrets.DISCORD_APP_ID }} -t ${{ secrets.DISCORD_BOT_TOKEN }} -g ${{ secrets.DEVELOPMENT_GUILD_ID }}
+        if: needs.check-secret-guild-id.outputs.exists == 'true'
+
+      - name: Sync Commands
+        run: npm run sync -- -i ${{ secrets.DISCORD_APP_ID }} -t ${{ secrets.DISCORD_BOT_TOKEN }}
+
+      - name: Build & Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          secrets: |
+            DISCORD_APP_ID
+            DISCORD_PUBLIC_KEY
+            DISCORD_BOT_TOKEN
+        env:
+          DISCORD_APP_ID: ${{ secrets.DISCORD_APP_ID }}
+          DISCORD_PUBLIC_KEY: ${{ secrets.DISCORD_PUBLIC_KEY }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}

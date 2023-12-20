@@ -56,11 +56,18 @@ jobs:
         if: steps.node-modules-cache.outputs.cache-hit != 'true'
 
       - name: Sync Commands (Guild)
-        run: npm run sync -- -i ${{ secrets.DISCORD_APP_ID }} -t ${{ secrets.DISCORD_BOT_TOKEN }} -g ${{ secrets.DEVELOPMENT_GUILD_ID }}
+        run: >
+          npm run sync --
+          -i ${{ secrets.DISCORD_APP_ID }}
+          -t ${{ secrets.DISCORD_BOT_TOKEN }}
+          -g ${{ secrets.DEVELOPMENT_GUILD_ID }}
         if: needs.check-secret-guild-id.outputs.exists == 'true'
 
       - name: Sync Commands
-        run: npm run sync -- -i ${{ secrets.DISCORD_APP_ID }} -t ${{ secrets.DISCORD_BOT_TOKEN }}
+        run: >
+          npm run sync --
+          -i ${{ secrets.DISCORD_APP_ID }}
+          -t ${{ secrets.DISCORD_BOT_TOKEN }}
 
       - name: Build & Deploy Worker
         uses: cloudflare/wrangler-action@v3

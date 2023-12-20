@@ -14,25 +14,10 @@ env:
   NODE_VERSION: lts/*
 
 jobs:
-  # see https://github.com/orgs/community/discussions/26726, https://stackoverflow.com/a/70249520
-  check-secret-guild-id:
-    runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
-    outputs:
-      exists: ${{ steps.check-secret-step.outputs.exists }}
-    steps:
-      - name: Check if DEVELOPMENT_GUILD_ID secret exists
-        id: check-secret-step
-        run: |
-          if [ "${{ secrets.DEVELOPMENT_GUILD_ID }}" != '' ]; then
-            echo "exists=true" >> $GITHUB_OUTPUT;
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT;
-          fi
-
   deploy:
-    needs: [check-secret-guild-id]
     runs-on: ubuntu-latest
+    env:
+      DEVELOPMENT_GUILD_ID: ${{ secrets.DEVELOPMENT_GUILD_ID }}
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     timeout-minutes: 15
     steps:
@@ -61,7 +46,7 @@ jobs:
           -i ${{ secrets.DISCORD_APP_ID }}
           -t ${{ secrets.DISCORD_BOT_TOKEN }}
           -g ${{ secrets.DEVELOPMENT_GUILD_ID }}
-        if: needs.check-secret-guild-id.outputs.exists == 'true'
+        if: ${{ env.DEVELOPMENT_GUILD_ID != '' }}
 
       - name: Sync Commands
         run: >

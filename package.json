@@ -7,9 +7,10 @@
     "deploy": "wrangler publish",
     "sync": "slash-up sync",
     "sync:dev": "slash-up sync -e development",
-    "lint": "npm run eslint && npm run prettier",
+    "lint": "pnpm eslint && pnpm prettier",
     "eslint": "eslint --ext .ts .",
-    "prettier": "prettier src --check"
+    "prettier": "prettier src --check",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231025.0",

@@ -10,10 +10,10 @@ After using this template, update the project name in `wrangler.toml` (and `pack
 
 Create a Discord application with a bot user at [https://discord.com/developers/applications](https://discord.com/developers/applications) (see https://discord.com/developers/docs/tutorials/hosting-on-cloudflare-workers).
 
-Install dependencies using npm:
+Install dependencies using pnpm:
 
 ```sh
-npm install
+pnpm install
 ```
 
 Upload repository secrets to the Github dashboard:
@@ -38,7 +38,6 @@ Once you have deployed your worker, go to the "general information" page of your
 
 For faster development without deploying each change, you may run the bot code on your local machine using `wrangler` and connect it to Discord using a free `ngrok` tunnel. Run `wrangler login` and follow the prompts to login to your Cloudflare account, and copy `.env.example` to `.dev.vars` and fill in the secrets.
 
-Open three terminals: one for `npm run dev`, one for `npm run ngrok`, and one for running `npm run sync:dev` each time you change a command's metadata (name, options, etc). Go to the "general information" page of your discord application and set its interactions endpoint URL to the ngrok tunnel.
+Open three terminals: one for `pnpm dev`, one for `pnpm ngrok`, and one for running `pnpm sync:dev` each time you change a command's metadata (name, options, etc). Go to the "general information" page of your discord application and set its interactions endpoint URL to the ngrok tunnel.
 
 Using `DEVELOPMENT_GUILD_ID` and testing in a single server is recommended, as server-specific commands sync instantly, while a bot's commands that can be used in any server update with a 1 hour cooldown/delay.
-

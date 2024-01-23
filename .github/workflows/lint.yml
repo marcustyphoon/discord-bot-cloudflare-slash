@@ -14,7 +14,7 @@ on:
     types: [opened, reopened, synchronize, ready_for_review]
 
 concurrency:
-  group: 'lint'
+  group: lint-${{ github.ref }}
   cancel-in-progress: true
 
 env:

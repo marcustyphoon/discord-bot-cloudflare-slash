@@ -13,13 +13,13 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231025.0",
-    "@typescript-eslint/eslint-plugin": "^6.10.0",
-    "@typescript-eslint/parser": "^6.10.0",
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "ngrok": "^5.0.0-beta.2",
-    "prettier": "^3.0.0",
+    "prettier": "^3.2.4",
     "slash-create": "^6.0.1",
     "slash-up": "^1.4.2",
     "wrangler": "^3.21.0"

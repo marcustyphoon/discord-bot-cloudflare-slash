@@ -22,6 +22,6 @@
     "prettier": "^3.2.4",
     "slash-create": "^6.0.1",
     "slash-up": "^1.4.2",
-    "wrangler": "^3.23.0"
+    "wrangler": "^3.24.0"
   }
 }

@@ -9,8 +9,7 @@
     "sync:dev": "slash-up sync -e development",
     "lint": "pnpm eslint && pnpm prettier",
     "eslint": "eslint --ext .ts .",
-    "prettier": "prettier src --check",
-    "preinstall": "npx only-allow pnpm"
+    "prettier": "prettier src --check"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240117.0",
@@ -23,5 +22,9 @@
     "slash-create": "^6.0.1",
     "slash-up": "^1.4.2",
     "wrangler": "^3.24.0"
+  },
+  "engines": {
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
   }
 }

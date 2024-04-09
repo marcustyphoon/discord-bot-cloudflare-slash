@@ -12,16 +12,16 @@
     "prettier": "prettier src --check"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240404.0",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
+    "@cloudflare/workers-types": "^4.20240405.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "ngrok": "^5.0.0-beta.2",
     "prettier": "^3.2.5",
     "slash-create": "^6.1.2",
     "slash-up": "^1.4.2",
-    "wrangler": "^3.45.0"
+    "wrangler": "^3.48.0"
   },
   "engines": {
     "npm": "please-use-pnpm",

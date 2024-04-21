@@ -41,3 +41,7 @@ For faster development without deploying each change, you may run the bot code o
 Open three terminals: one for `pnpm dev`, one for `pnpm ngrok`, and one for running `pnpm sync:dev` each time you change a command's metadata (name, options, etc). Go to the "general information" page of your discord application and set its interactions endpoint URL to the ngrok tunnel.
 
 Using `DEVELOPMENT_GUILD_ID` and testing in a single server is recommended, as server-specific commands sync instantly, while a bot's commands that can be used in any server update with a 1 hour cooldown/delay.
+
+---
+
+_This work is marked with [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1)._

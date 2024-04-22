@@ -10,7 +10,7 @@ After using this template, update the project name in `wrangler.toml` (and `pack
 
 Create a Discord application with a bot user at [https://discord.com/developers/applications](https://discord.com/developers/applications) (see https://discord.com/developers/docs/tutorials/hosting-on-cloudflare-workers).
 
-Install dependencies using pnpm:
+Install dependencies using pnpm 8:
 
 ```sh
 pnpm install

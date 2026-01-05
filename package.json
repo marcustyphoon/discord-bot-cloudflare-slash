@@ -12,9 +12,9 @@
     "prettier": "prettier src --check"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251224.0",
-    "@typescript-eslint/eslint-plugin": "^8.50.1",
-    "@typescript-eslint/parser": "^8.50.1",
+    "@cloudflare/workers-types": "^4.20260103.0",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "ngrok": "^5.0.0-beta.2",

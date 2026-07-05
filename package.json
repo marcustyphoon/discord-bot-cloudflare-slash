@@ -15,7 +15,7 @@
     "undici@5.29.0": "^7.24.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260620.1",
+    "@cloudflare/workers-types": "^4.20260702.1",
     "@typescript-eslint/eslint-plugin": "^8.61.1",
     "@typescript-eslint/parser": "^8.61.1",
     "eslint": "^8.57.1",

@@ -21,7 +21,7 @@
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.9.6",
-    "slash-create": "^6.8.1",
+    "slash-create": "^7.0.0",
     "slash-up": "^1.4.2",
     "wrangler": "^4.118.0"
   },

@@ -30,8 +30,8 @@ importers:
         specifier: ^3.9.6
         version: 3.9.6
       slash-create:
-        specifier: ^6.8.1
-        version: 6.8.1
+        specifier: ^7.0.0
+        version: 7.0.0
       slash-up:
         specifier: ^1.4.2
         version: 1.4.2
@@ -788,6 +788,10 @@ packages:
     engines: {node: '>=8.0.0'}
     hasBin: true
 
+  dequal@2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
+
   detect-libc@2.1.2:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
@@ -1156,6 +1160,18 @@ packages:
       fastify:
         optional: true
 
+  slash-create@7.0.0:
+    resolution: {integrity: sha512-w80Os5k53ZW2xZYsumxJeV+56mohje5Ujg8eqcRRcnF9NBksfYTS4PbXZGwhnd6CPE5jTEf1+K1X1XqUB/3z8w==}
+    engines: {node: '>=18.17'}
+    peerDependencies:
+      express: ^4
+      fastify: ^3 || ^4
+    peerDependenciesMeta:
+      express:
+        optional: true
+      fastify:
+        optional: true
+
   slash-up@1.4.2:
     resolution: {integrity: sha512-Ppm+sJ8eA+sZK58aQu4Pmlpbyo/LvIaQDCO5dp0zWnHS4dmAHgsrgWhJocNePkqbXGtPHLSOL7+BFwwKWHitfg==}
     engines: {node: '>=14'}
@@ -1220,8 +1236,16 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici@6.28.0:
+    resolution: {integrity: sha512-LIY910g9TI13YS95lrMFrs8Rm/u/irgHeTWoKCoteeJ04CUJ92eEfj0rVn+7VKMPBpUPiUoBKfhNyLI23EE/KA==}
+    engines: {node: '>=18.17'}
+
   undici@7.28.0:
     resolution: {integrity: sha512-cRZYrTDwWznlnRiPjggAGxZXanty6M8RV1ff8Wm4LWXBp7/IG8v5DnOm74DtUBp9OONpK75YlPnIjQqX0dBDtA==}
+    engines: {node: '>=20.18.1'}
+
+  undici@7.29.0:
+    resolution: {integrity: sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==}
     engines: {node: '>=20.18.1'}
 
   unenv@2.0.0-rc.24:
@@ -1840,6 +1864,8 @@ snapshots:
 
   degit@2.8.6: {}
 
+  dequal@2.0.3: {}
+
   detect-libc@2.1.2: {}
 
   doctrine@3.0.0:
@@ -2250,7 +2276,14 @@ snapshots:
       eventemitter3: 5.0.4
       lodash.isequal: 4.5.0
       tweetnacl: 1.0.3
-      undici: 7.28.0
+      undici: 7.29.0
+
+  slash-create@7.0.0:
+    dependencies:
+      dequal: 2.0.3
+      eventemitter3: 5.0.4
+      tweetnacl: 1.0.3
+      undici: 6.28.0
 
   slash-up@1.4.2:
     dependencies:
@@ -2318,7 +2351,11 @@ snapshots:
 
   typescript@6.0.3: {}
 
+  undici@6.28.0: {}
+
   undici@7.28.0: {}
+
+  undici@7.29.0: {}
 
   unenv@2.0.0-rc.24:
     dependencies:
